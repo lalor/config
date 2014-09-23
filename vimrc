@@ -97,6 +97,21 @@ Bundle 'matchit.zip'
 "高亮markdown文档
 Bundle 'plasticboy/vim-markdown'
 
+"Tab键补全
+Bundle 'ervandew/supertab'
+
+Bundle 'reinh/vim-makegreen'
+
+Bundle 'fs111/pydoc.vim'
+
+"显示Undo历史"
+Bundle 'sjl/gundo.vim'
+
+Bundle 'alfredodeza/pytest.vim'
+
+"好叼的插件，用以判断是否有语法错误，python代码是否符合PEP8规范
+Bundle 'scrooloose/syntastic'
+
 filetype plugin indent on    " required!
 
 
@@ -496,6 +511,11 @@ let NERDTreeWinPos=1
 
 
 """"""""""""""""""""""
+" NERDTree.vim<F9>
+""""""""""""""""""""""
+nmap <F10> :GundoToggle<CR>
+
+""""""""""""""""""""""
 " miniBufExp
 """"""""""""""""""""""
 let g:miniBufExplMapWindowNavVim = 1
@@ -584,7 +604,6 @@ vmap <Leader>i: :Tab /:\zs<CR>
 let t_Co=256
 set laststatus=2
 let g:Powerline_symbols='unicode'
-
 
 
 """"""""""""""""""""""
