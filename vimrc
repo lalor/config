@@ -102,6 +102,25 @@ Bundle 'matchit.zip'
 "高亮markdown文档
 Bundle 'plasticboy/vim-markdown'
 
+"Tab键补全
+""Bundle 'ervandew/supertab'
+
+Bundle 'reinh/vim-makegreen'
+
+Bundle 'fs111/pydoc.vim'
+
+"显示Undo历史"
+Bundle 'sjl/gundo.vim'
+
+Bundle 'alfredodeza/pytest.vim'
+
+"好叼的插件，用以判断是否有语法错误，python代码是否符合PEP8规范
+Bundle 'scrooloose/syntastic'
+
+"indent line
+"Bundle 'Yggdroot/indentLine'
+"let g:indentLine_char = '┊'
+
 filetype plugin indent on    " required!
 
 
@@ -271,13 +290,47 @@ noremap <leader>p "+p
 "some settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+
+
+""""""""""""""""""""""
+"Quickly Run
+""""""""""""""""""""""
+map <F5> :call CompileRunGcc()<CR>
+func! CompileRunGcc()
+    exec "w"
+    if &filetype == 'c'
+        exec "!g++ % -o %<"
+        exec "!time ./%<"
+    elseif &filetype == 'cpp'
+        exec "!g++ % -o %<"
+        exec "!time ./%<"
+    elseif &filetype == 'java'
+        exec "!javac %"
+        exec "!time java %<"
+    elseif &filetype == 'sh'
+        :!time bash %
+    elseif &filetype == 'python'
+        exec "!time python2.7 %"
+    elseif &filetype == 'html'
+        exec "!firefox % &"
+    elseif &filetype == 'go'
+"        exec "!go build %<"
+        exec "!time go run %"
+    elseif &filetype == 'mkd'
+        exec "!~/.vim/markdown.pl % > %.html &"
+        exec "!firefox %.html &"
+    endif
+endfunc
+
+
+
 """"""""""""""""""""""
 "tab setting
 """"""""""""""""""""""
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
-set expandtab
+set tabstop=4 "Tab键的宽度
+set shiftwidth=4 "统一缩进为4"
+set softtabstop=4 ""
+set expandtab "用空格代替Tab"
 
 
 
@@ -308,13 +361,13 @@ set hidden
 set wildmenu
 set wildmode=list:longest
 set visualbell
-set cursorline " highlight line under cursor
+set cursorline " 高亮光标所在行
 set ttyfast
 "always dispaly the postion of cursor
 set ruler
 set backspace=indent,eol,start "解除Backspace 的限制
 set laststatus=2
-set relativenumber " relativenumber
+set relativenumber "显示相对行号
 set undofile "undo file
 "Ignore compiled files
 set wildignore=*.o,*~,*.prc
@@ -383,8 +436,9 @@ set autowrite
 """"""""""""""""""""""
 " Buffer
 """"""""""""""""""""""
-map <leader>bd :Bclose<CR> "close the current buffer
-map <leader>ba :1,1000 bd!<CR> "close the current buffer
+"close the current buffer
+map <leader>bd :Bclose<CR>
+map <leader>ba :1,1000 bd!<CR>
 
 
 
@@ -454,7 +508,6 @@ let Tlist_Process_File_Always=1
 let Tlist_WinHeight=10
 let Tlist_WinWidth=33
 let Tlist_Use_Horiz_Window=0
-map <silent><leader>tl :TlistToggle<CR>
 map <F7> :Tlist<CR>
 
 
@@ -498,6 +551,13 @@ let g:SrcExpl_updateTagsKey = "<F12>"
 map <F9> :NERDTreeToggle<CR>
 let NERDTreeMinimalUI=0
 let NERDTreeWinPos=1
+
+
+
+""""""""""""""""""""""
+" gundo.vim
+""""""""""""""""""""""
+nmap <F10> :GundoToggle<CR>
 
 
 
@@ -562,14 +622,6 @@ map <leader>dl : DoxBlock<CR>
 """"""""""""""""""""""
 let MRU_Exclude_Files='.*\.vim$'
 map <leader>m :MRU<CR>
-
-
-
-""""""""""""""""""""""
-" Calendar.vim
-""""""""""""""""""""""
-map ca :CalendarH<Cr>
-let g:calendar_diary="~/.diary"
 
 
 
