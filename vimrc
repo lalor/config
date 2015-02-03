@@ -50,6 +50,7 @@ Bundle 'ShowTrailingWhitespace'
 
 "molokar主题
 Bundle 'molokai'
+Bundle 'lalor/badwolf'
 
 "打开最近使用的文件
 Bundle 'mru.vim'
@@ -69,11 +70,15 @@ Bundle 'lalor/snipMate'
 "让代码更易于纵向排版
 Bundle 'Tabular'
 
+Bundle 'scrooloose/syntastic'
+
 " 看代码用的
 Bundle 'taglist.vim'
 
 "vim中文输入法
 Bundle 'VimIM'
+
+Bundle 'davidhalter/jedi-vim'
 
 "粘贴
 Bundle 'YankRing.vim'
@@ -107,6 +112,7 @@ filetype plugin indent on    " required!
 set t_Co=256
 set background=dark "this line must occur before next line
 colorscheme molokai
+"colorscheme badwolf
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -594,3 +600,34 @@ let g:Powerline_symbols='unicode'
 "ctrl + n
 nnoremap <leader>y :YRShow<CR>
 let g:yankring_history_file = '.my_yankring_history_file'
+
+map <F5> :call CompileRunGcc()<CR>
+func! CompileRunGcc()
+	exec "w"
+	if &filetype == 'c'
+		exec "!g++ % -o %<"
+		exec "!time ./%<"
+	elseif &filetype == 'cpp'
+		exec "!g++ % -o %<"
+		exec "!time ./%<"
+	elseif &filetype == 'java'
+		exec "!javac %"
+		exec "!time java %<"
+	elseif &filetype == 'sh'
+		:!time bash %
+	elseif &filetype == 'python'
+		exec "!time python2.7 %"
+    elseif &filetype == 'html'
+        exec "!firefox % &"
+    elseif &filetype == 'go'
+"        exec "!go build %<"
+        exec "!time go run %"
+    elseif &filetype == 'mkd'
+        exec "!~/.vim/markdown.pl % > %.html &"
+        exec "!firefox %.html &"
+	endif
+endfunc
+
+
+
+let g:jedi#use_splits_not_buffers = "bottom"
