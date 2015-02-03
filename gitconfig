@@ -1,0 +1,21 @@
+[user]
+	email = me@mingxinglai.com
+	name = Mingxing LAI
+[alias]
+	co = checkout
+    ci = commit
+	st = status -sb
+    br = branch
+	hist = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
+    type = cat-file -t
+    dump = cat-file -p
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
+	cm = commit
+	ac = !git add -A && git commit
+	tags = tag -l
+	branches = branch -a
+	remotes = remote -v
+[color]
+	ui = 1
+[help]
+	autocorrect = 1
