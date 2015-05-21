@@ -70,8 +70,6 @@ Bundle 'lalor/snipMate'
 "让代码更易于纵向排版
 Bundle 'Tabular'
 
-Bundle 'scrooloose/syntastic'
-
 " 看代码用的
 Bundle 'taglist.vim'
 
