@@ -12,7 +12,8 @@ then
     echo "git is ok..."
 else
     echo "ready to install git..."
-    sudo apt-get install git
+    sudo apt-get install git --yes
+    sudo apt-get install tmux --yes
 fi
 
 # 2. make some directory
@@ -39,7 +40,11 @@ fi
 
 # 5. get vimrc
 echo "ready to get vimrc"
-wget https://raw.github.com/lalor/vimrc/master/vimrc -q -O ~/.vimrc
+wget https://raw.github.com/lalor/config/master/vimrc -q -O ~/.vimrc
+
+# 6. get .gitconfig
+echo "ready to get .gitconfig"
+wget https://raw.github.com/lalor/config/master/gitconfig -q -O ~/.gitconfig
 
 # 6. vim:BundleInstall
 echo "Successfully"
