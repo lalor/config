@@ -48,6 +48,8 @@ Bundle 'FencView.vim'
 "显示行末尾的空格
 Bundle 'ShowTrailingWhitespace'
 
+Bundle 'ryanss/vim-hackernews'
+
 "molokar主题
 Bundle 'molokai'
 Bundle 'lalor/badwolf'
