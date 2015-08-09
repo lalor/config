@@ -14,6 +14,7 @@ else
     echo "ready to install git..."
     sudo apt-get install git --yes
     sudo apt-get install tmux --yes
+    sudo apt-get install ack-grep --yes
 fi
 
 # 2. make some directory

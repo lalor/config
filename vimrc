@@ -120,6 +120,9 @@ Bundle 'scrooloose/syntastic'
 "indent line
 "Bundle 'Yggdroot/indentLine'
 "let g:indentLine_char = '┊'
+"
+" 代码搜索
+Bundle 'mileszs/ack.vim'
 
 filetype plugin indent on    " required!
 
@@ -681,5 +684,5 @@ func! CompileRunGcc()
 endfunc
 
 
-
 let g:jedi#use_splits_not_buffers = "bottom"
+let g:ack_default_options= " --color-match=red"
