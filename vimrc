@@ -45,7 +45,6 @@ Bundle 'ryanss/vim-hackernews'
 
 "molokar主题
 Bundle 'molokai'
-Bundle 'lalor/badwolf'
 
 "打开最近使用的文件
 Bundle 'mru.vim'
@@ -60,7 +59,7 @@ Bundle 'rainbow_parentheses.vim'
 Bundle 'SearchComplete'
 
 "强大的代码补全插件
-Bundle 'lalor/snipMate'
+Bundle 'garbas/vim-snipmate'
 
 "让代码更易于纵向排版
 Bundle 'Tabular'
