@@ -6,16 +6,15 @@
 #
 ###################################################################################
 
+# 0. prepare
+sudo apt-get update
+
 # 1. check git
-if git --help &> /dev/null
-then
-    echo "git is ok..."
-else
-    echo "ready to install git..."
-    sudo apt-get install git --yes
-    sudo apt-get install tmux --yes
-    sudo apt-get install ack-grep --yes
-fi
+for item in "git" "tmux" "ack-grep" "ipython" "python-pip" "mpstat" "htop" "dstat" "exuberant-ctags" "tree" "pstree" "python3"
+do
+    echo "ready to install ${item} ...."
+    sudo apt-get install ${item} --yes
+done
 
 # 2. make some directory
 if [ -d ~/.vim ]
@@ -30,22 +29,23 @@ mkdir -p ~/.vim/tmp/swap
 # 3. clone vundle
 git clone http://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 
-# 4. install ctags
-if ctags --help &> /dev/null
-then
-    echo "ctags is ok..."
-else
-    echo "Ready to install ctags"
-    sudo apt-get install exuberant-ctags
-fi
-
-# 5. get vimrc
+# 4. get vimrc
 echo "ready to get vimrc"
 wget https://raw.github.com/lalor/config/master/vimrc -q -O ~/.vimrc
 
-# 6. get .gitconfig
+# 5. get .gitconfig
 echo "ready to get .gitconfig"
 wget https://raw.github.com/lalor/config/master/gitconfig -q -O ~/.gitconfig
+
+# 6. update vim
+sudo aptitude install vim-gnome vim vim-common vim-tiny
+
+# 7. pip install
+for item in "pstuil" "glances" "tox"
+do
+    echo "ready to install ${item}"
+    sudo apt-get install ${item} --yes
+done
 
 # 6. vim:BundleInstall
 echo "Successfully"

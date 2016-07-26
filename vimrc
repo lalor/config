@@ -1,8 +1,4 @@
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"
-"Author : Mingxing LAI
+
 "Date   : 2013年 07月 03日 星期三
 "
 "1. mkdir -p ~/.vim/budle/vundle
@@ -30,9 +26,6 @@ Bundle 'gmarik/vundle'
 
 "快速的在.h文件与.cpp文件之间切换
 Bundle 'a.vim'
-
-"输入需要配对的符号时，自动帮你补全另外半个
-Bundle 'AutoClose'
 
 
 Bundle 'cecutil'
@@ -187,9 +180,6 @@ let mapleader=","
 "insert a blank line before this line
 map tt O<Esc>j
 "
-"use ; replace with :, you can hit keyboard more quickly
-nnoremap ; :
-"
 "change word to uppercase, I love this very much
 inoremap <C-u> <esc>gUiwea
 
@@ -260,8 +250,7 @@ map <C-l> <C-w>l
 
 map <C-o> <C-w>o
 "map <C-r> <C-w>r
-map <C-=> <C-w>=
-map <C-left> <C-w>+
+map <C-=> <C-w>= map <C-left> <C-w>+
 map <C-right> <C-w>-
 
 "switch between windows
@@ -313,7 +302,7 @@ func! CompileRunGcc()
     elseif &filetype == 'sh'
         :!time bash %
     elseif &filetype == 'python'
-        exec "!time python2.7 %"
+        exec "!time python3 %"
     elseif &filetype == 'html'
         exec "!firefox % &"
     elseif &filetype == 'go'
@@ -511,6 +500,8 @@ let Tlist_Process_File_Always=1
 let Tlist_WinHeight=10
 let Tlist_WinWidth=33
 let Tlist_Use_Horiz_Window=0
+let Tlist_Ctags_Cmd='/usr/local/bin/ctags'
+
 map <F7> :Tlist<CR>
 
 
@@ -655,34 +646,6 @@ let g:Powerline_symbols='unicode'
 "ctrl + n
 nnoremap <leader>y :YRShow<CR>
 let g:yankring_history_file = '.my_yankring_history_file'
-
-map <F5> :call CompileRunGcc()<CR>
-func! CompileRunGcc()
-	exec "w"
-	if &filetype == 'c'
-		exec "!g++ % -o %<"
-		exec "!time ./%<"
-	elseif &filetype == 'cpp'
-		exec "!g++ % -o %<"
-		exec "!time ./%<"
-	elseif &filetype == 'java'
-		exec "!javac %"
-		exec "!time java %<"
-	elseif &filetype == 'sh'
-		:!time bash %
-	elseif &filetype == 'python'
-		exec "!time python2.7 %"
-    elseif &filetype == 'html'
-        exec "!firefox % &"
-    elseif &filetype == 'go'
-"        exec "!go build %<"
-        exec "!time go run %"
-    elseif &filetype == 'mkd'
-        exec "!~/.vim/markdown.pl % > %.html &"
-        exec "!firefox %.html &"
-	endif
-endfunc
-
 
 let g:jedi#use_splits_not_buffers = "bottom"
 let g:ack_default_options= " --color-match=red"
