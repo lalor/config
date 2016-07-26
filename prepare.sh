@@ -41,12 +41,12 @@ wget https://raw.github.com/lalor/config/master/gitconfig -q -O ~/.gitconfig
 sudo aptitude install vim-gnome vim vim-common vim-tiny
 
 # 7. pip install
-for item in "pstuil" "glances" "tox"
+for item in "pstuil" "glances" "tox" "jedi"
 do
     echo "ready to install ${item}"
     sudo apt-get install ${item} --yes
 done
 
-# 6. vim:BundleInstall
+# 8. vim:BundleInstall
 echo "Successfully"
 echo "please run :BundleInstall in vim"
