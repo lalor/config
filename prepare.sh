@@ -21,10 +21,10 @@ if [ -d ~/.vim ]
 then
     rm -rf ~/.vim
 fi
-mkdir -p ~/.vim/budle/vundle
 mkdir -p ~/.vim/tmp/undo
 mkdir -p ~/.vim/tmp/backup
 mkdir -p ~/.vim/tmp/swap
+mkdir -p ~/.ptpython
 
 # 3. clone vundle
 git clone http://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
@@ -36,12 +36,13 @@ wget https://raw.github.com/lalor/config/master/vimrc -q -O ~/.vimrc
 # 5. get .gitconfig
 echo "ready to get .gitconfig"
 wget https://raw.github.com/lalor/config/master/gitconfig -q -O ~/.gitconfig
+wget https://raw.github.com/lalor/config/master/config.py -q -O ~/.ptpython/config.py
 
 # 6. update vim
 sudo aptitude install vim-gnome vim vim-common vim-tiny
 
 # 7. pip install
-for item in "pstuil" "glances" "tox" "jedi"
+for item in "pstuil" "glances" "tox" "jedi" "virtualenv" "ptpython"
 do
     echo "ready to install ${item}"
     sudo apt-get install ${item} --yes

@@ -59,7 +59,7 @@ Bundle 'rainbow_parentheses.vim'
 Bundle 'SearchComplete'
 
 "强大的代码补全插件
-Bundle 'garbas/vim-snipmate'
+Bundle 'lalor/snipMate'
 
 "让代码更易于纵向排版
 Bundle 'Tabular'
