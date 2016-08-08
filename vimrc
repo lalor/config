@@ -499,7 +499,7 @@ let Tlist_Process_File_Always=1
 let Tlist_WinHeight=10
 let Tlist_WinWidth=33
 let Tlist_Use_Horiz_Window=0
-let Tlist_Ctags_Cmd='/usr/local/bin/ctags'
+let Tlist_Ctags_Cmd='/usr/bin/ctags'
 
 map <F7> :Tlist<CR>
 
